@@ -284,9 +284,6 @@ module \\$__ONE (output Y); assign Y = 1'b1; endmodule
 
 module \\$__CC_BUF (input A, output Y); assign Y = A; endmodule
 
-// TODO: remove once we can fold into LUT tree
-module \\$__CC_NOT (input A, output Y); CC_LUT1 #(.INIT(2'b01)) _TECHMAP_REPLACE_ (.I0(A), .O(Y)); endmodule
-
 """, file=vf)
     for name, cost, expr in cells:
         expr = expr.mapMux().mapNot() # Don't map XOR

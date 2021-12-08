@@ -318,7 +318,10 @@ struct SynthGateMatePass : public ScriptPass
 				}
 				run("abc " + abc_args, "(with -luttree)");
 				run("techmap -map +/gatemate/lut_tree_map.v", "(with -luttree)");
-			} else {
+				run("gatemate_foldinv", "(with -luttree)");
+				run("techmap -map +/gatemate/inv_map.v", "(with -luttree)");
+			}
+			if (!luttree || help_mode) {
 				std::string abc_args = " -dress -lut 4";
 				if (dff) {
 					abc_args += " -dff";
