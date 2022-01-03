@@ -1,0 +1,2 @@
+read_verilog ./blink.v
+synth_ecp5 -json blink.json
